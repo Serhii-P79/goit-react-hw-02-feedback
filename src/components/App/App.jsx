@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { GlobalStyle } from './GLobalStyle';
 import { Statistics, FeedbackOptions, Section, Notification } from 'components';
 
 class App extends Component {
@@ -8,26 +9,12 @@ class App extends Component {
     bad: 0,
   };
 
-  goodIncrement = () => {
+  feedbackIncrement = e => {
+    // console.log(e.target);
+    const name = e.target.name;
     this.setState(prevState => {
       return {
-        good: prevState.good + 1,
-      };
-    });
-  };
-
-  neutralIncrement = () => {
-    this.setState(prevState => {
-      return {
-        neutral: prevState.neutral + 1,
-      };
-    });
-  };
-
-  badIncrement = () => {
-    this.setState(prevState => {
-      return {
-        bad: prevState.bad + 1,
+        [name]: prevState[name] + 1,
       };
     });
   };
@@ -35,7 +22,9 @@ class App extends Component {
   countPositiveFeedbackPercentage = () => {
     return Math.round(
       (this.state.good * 100) /
-        (this.state.good + this.state.neutral + this.state.bad),
+        (this.state.good + this.state.neutral + this.state.bad === 0
+          ? 1
+          : this.state.good + this.state.neutral + this.state.bad),
     );
   };
 
@@ -46,14 +35,12 @@ class App extends Component {
   render() {
     return (
       <>
+        <GlobalStyle />
+
         <Section title={'Please leave feedback'}>
           <FeedbackOptions
-            options={true}
-            onLeaveFeedback={{
-              good: this.goodIncrement,
-              neutral: this.neutralIncrement,
-              bad: this.badIncrement,
-            }}
+            options={['good', 'neutral', 'bad']}
+            onLeaveFeedback={this.feedbackIncrement}
           />
         </Section>
 

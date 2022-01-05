@@ -1,7 +1,9 @@
 import 'normalize.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { ThemeProvider } from 'styled-components';
 import { App } from 'components';
+import { theme } from 'constant';
 
 //============================================================
 
@@ -11,7 +13,9 @@ import { App } from 'components';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );

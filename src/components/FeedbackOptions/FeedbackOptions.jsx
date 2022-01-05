@@ -1,18 +1,22 @@
 import React from 'react';
+import { Css } from './FeedbackOptions.styled';
 
 function FeedbackOptions({ options, onLeaveFeedback }) {
   return (
-    <div>
-      <button type="button" onClick={onLeaveFeedback.good}>
-        good
-      </button>
-      <button type="button" onClick={onLeaveFeedback.neutral}>
-        neutral
-      </button>
-      <button type="button" onClick={onLeaveFeedback.bad}>
-        bad
-      </button>
-    </div>
+    <Css.ButtonOption>
+      {options.map(element => {
+        return (
+          <Css.Button
+            key={element}
+            type="button"
+            name={element}
+            onClick={onLeaveFeedback}
+          >
+            {element}
+          </Css.Button>
+        );
+      })}
+    </Css.ButtonOption>
   );
 }
 
