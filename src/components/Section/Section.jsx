@@ -1,5 +1,5 @@
-import React from 'react';
 import { Css } from './Section.styled';
+import PropTypes from 'prop-types';
 
 function Section({ title, children }) {
   return (
@@ -11,3 +11,7 @@ function Section({ title, children }) {
 }
 
 export { Section };
+
+Section.protoType = {
+  title: PropTypes.string.isRequired,
+};
