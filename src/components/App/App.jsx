@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { GlobalStyle } from './GLobalStyle';
 import { Statistics, FeedbackOptions, Section, Notification } from 'components';
 
