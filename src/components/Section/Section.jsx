@@ -12,6 +12,7 @@ function Section({ title, children }) {
 
 export { Section };
 
-Section.protoType = {
+Section.propTypes = {
   title: PropTypes.string.isRequired,
+  children: PropTypes.object,
 };
